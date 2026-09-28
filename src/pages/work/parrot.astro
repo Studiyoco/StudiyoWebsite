@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import Cta from '../../components/Cta.astro';
+import NextProject from '../../components/NextProject.astro';
+import { clips } from '../../data/media';
+
+const description =
+  'A mascot for a language-learning app, with Rive emotions, in-product screens, a website, and a paywall.';
+---
+
+<Base
+  title="Parrot — Studiyo"
+  description={description}
+  image="/assets/video/parrot-emotions-rive.jpg"
+  imageAlt="Parrot mascot showing several emotions"
+>
+  <article class="case">
+    <header class="case-hero">
+      <div class="wrap">
+        <p class="crumb"><a href="/#work">Work</a></p>
+        <h1>Parrot</h1>
+        <p class="lede">A language-learning buddy with emotions people can trust.</p>
+        <div class="case-hero-media">
+          <figure class="tile">
+            <Video clip={clips['parrot-language-buddy']} />
+            <figcaption class="sr-only">Language-learning buddy in the app</figcaption>
+          </figure>
+        </div>
+        <dl class="meta">
+          <div>
+            <dt>Client</dt>
+            <dd>Language-learning app</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Mobile app and website</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Mascot, Rive emotions, app screens, website, paywall</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Inside the lesson</h2>
+        <div class="copy">
+          <p>The parrot shows up in the product, next to the words someone is trying to learn.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>More than a smile</h2>
+        <div class="copy">
+          <p>
+            A mascot that only looks happy is a mascot nobody trusts. Focused, lost, done, screaming.
+            Built in Rive.
+          </p>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['parrot-emotions-rive']} />
+          <figcaption>Emotions in Rive</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>In the app</h2>
+        <div class="copy">
+          <p>Lessons, progress, and the character in the interface.</p>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['parrot-app-screens']} />
+          <figcaption>App screens</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>The website</h2>
+        <div class="copy">
+          <p>The same buddy, on the marketing site, so the product and the page feel like one thing.</p>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['parrot-website']} />
+          <figcaption>Website</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>The paywall</h2>
+        <div class="copy">
+          <p>
+            A blue bird from the same language-app family, placed where someone decides to stay.
+          </p>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['mip-bluebird-paywall']} />
+          <figcaption>Paywall</figcaption>
+        </figure>
+        <NextProject href="/work/parrot" />
+        <Cta />
+      </div>
+    </section>
+  </article>
+</Base>

@@ -1,0 +1,407 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import Cta from '../../components/Cta.astro';
+import NextProject from '../../components/NextProject.astro';
+import { clips } from '../../data/media';
+
+const palette = [
+  { name: 'Base', hex: '#78DCF8' },
+  { name: 'Green', hex: '#6DD10B' },
+  { name: 'Face', hex: '#2C7BC2' },
+  { name: 'Pupil & outline', hex: '#1A588A' },
+  { name: 'Highlights', hex: '#CFFAFC' },
+];
+
+const expressions = [
+  ['neutral', 'Neutral'],
+  ['excited', 'Excited'],
+  ['angry', 'Angry'],
+  ['smirk', 'Smirk'],
+  ['happy', 'Happy'],
+  ['relaxed', 'Relaxed'],
+];
+
+const description =
+  'How Studiyo designed the Tripbff mascot: a travel companion, from wireframe to expressions, states, and in-app motion.';
+---
+
+<Base
+  title="Tripbff — Studiyo"
+  description={description}
+  image="/assets/video/tripbff-brand-face.jpg"
+  imageAlt="Tripbff mascot on the brand banner"
+>
+  <article class="case">
+    <header class="case-hero">
+      <div class="wrap">
+        <p class="crumb"><a href="/#work">Work</a></p>
+        <h1>Tripbff</h1>
+        <p class="lede">A companion that makes the app feel like your travel BFF.</p>
+        <div class="case-hero-media">
+          <figure class="frame">
+            <img
+              src="/assets/img/tripbff/boards/tripbff_banner.webp"
+              alt="Tripbff banner. A waving globe mascot in a cloudy sky, with the words Your BFF."
+              width="2000"
+              height="1333"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <dl class="meta">
+          <div>
+            <dt>Client</dt>
+            <dd>Tripbff<span>Travel & meetup app</span></dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Mobile app</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Mascot design, 3D-style render, expressions, states, animation, brand visuals</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>The brief</h2>
+        <div class="copy">
+          <p>
+            Travel apps ask people to meet someone new in a city they don’t know. Tripbff needed a
+            character that makes that feel friendly.
+          </p>
+          <p>A small globe, a wave, and a line that does the job: YOUR BFF!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Wireframe to render</h2>
+        <div class="copy">
+          <p>The character was drawn as a wireframe, then textured, then rendered.</p>
+        </div>
+        <div class="trio">
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/process/tripbff_process_1_wireframe.webp"
+                alt="Wireframe of the Tripbff globe mascot"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Wireframe</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/process/tripbff_process_2_wireframe-x-texture.webp"
+                alt="Tripbff mascot wireframe with texture laid over it"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Wireframe × texture</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/process/tripbff_process_3_render.webp"
+                alt="Finished render of the Tripbff mascot"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Render</figcaption>
+          </figure>
+        </div>
+        <figure class="tile" style="margin-top: 16px">
+          <Video clip={clips['tripbff-official-mascot']} />
+          <figcaption>The same pass, in motion</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Turnaround</h2>
+        <div class="copy">
+          <p>Three poses lock the body before anything moves: T-pose, side, and waving.</p>
+        </div>
+        <div class="trio">
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/poses/tripbff_pose_tpose.webp"
+                alt="Tripbff mascot in a T-pose"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>T-pose</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/poses/tripbff_pose_side.webp"
+                alt="Side view of the Tripbff mascot"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Side</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/poses/tripbff_pose_waving.webp"
+                alt="Tripbff mascot waving"
+                width="1400"
+                height="1223"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Waving</figcaption>
+          </figure>
+        </div>
+        <figure class="frame" style="margin-top: 16px">
+          <img
+            src="/assets/img/tripbff/tripbff_character-sheet.webp"
+            alt="Tripbff character sheet"
+            width="1440"
+            height="810"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Expressions</h2>
+        <div class="copy">
+          <p>Six faces, so the mascot can react instead of smiling through everything.</p>
+        </div>
+        <div class="expr">
+          {
+            expressions.map(([file, label]) => (
+              <figure class="shot">
+                <div class="shot-media">
+                  <img
+                    src={`/assets/img/tripbff/expressions/tripbff_expression_${file}.webp`}
+                    alt={`Tripbff mascot, ${label.toLowerCase()}`}
+                    width="1200"
+                    height="1200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>{label}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Travel states</h2>
+        <div class="copy">
+          <p>The same character, dressed for what the user is doing.</p>
+        </div>
+        <div class="trio">
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/states/tripbff_state_default.webp"
+                alt="Tripbff mascot in the default state"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Default</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/states/tripbff_state_going-on-a-trip.webp"
+                alt="Tripbff mascot dressed for going on a trip"
+                width="1024"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Going on a trip</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/states/tripbff_state_travel-friends-meetup.webp"
+                alt="Tripbff mascot for a travel friends meetup"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Travel friends meet up</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Props</h2>
+        <div class="copy">
+          <p>Objects the mascot can hold, win, or fly with.</p>
+        </div>
+        <div class="quad">
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_backpack.webp"
+                alt="Tripbff mascot with a backpack"
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Backpack</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_trophy.webp"
+                alt="Tripbff mascot holding a trophy"
+                width="636"
+                height="568"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Trophy</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_airplane.webp"
+                alt="Tripbff mascot with an airplane"
+                width="1400"
+                height="1050"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Airplane</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_judge-gavel.webp"
+                alt="Tripbff mascot with a judge’s gavel"
+                width="500"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Gavel</figcaption>
+          </figure>
+        </div>
+        <div class="split" style="margin-top: 16px">
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_idle.webp"
+                alt="Tripbff mascot in an idle pose"
+                width="1400"
+                height="1223"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Idle</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/tripbff/props/tripbff_waving-cutout.webp"
+                alt="Cutout of the Tripbff mascot waving"
+                width="1400"
+                height="1223"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Waving</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Palette</h2>
+        <div class="copy">
+          <p>Sky blue for the body, a deeper blue for the face, navy for the eyes, green for the land.</p>
+        </div>
+        <ul class="swatches">
+          {
+            palette.map((swatch) => (
+              <li>
+                <span class="chip" style={`--c: ${swatch.hex}`}></span>
+                <strong>{swatch.name}</strong>
+                <code>{swatch.hex}</code>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>In the app</h2>
+        <div class="copy">
+          <p>The character on the banner, in the poses, and inside the new app screens.</p>
+        </div>
+        <div class="stack">
+          <figure class="tile">
+            <Video clip={clips['tripbff-new-app']} />
+            <figcaption>New app screens</figcaption>
+          </figure>
+          <figure class="tile">
+            <Video clip={clips['tripbff-brand-face']} />
+            <figcaption>Brand face: banner, poses, animation</figcaption>
+          </figure>
+        </div>
+        <NextProject href="/work/tripbff" />
+        <Cta />
+      </div>
+    </section>
+  </article>
+</Base>

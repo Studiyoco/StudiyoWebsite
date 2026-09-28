@@ -1,0 +1,35 @@
+---
+import type { Clip } from '../data/media';
+
+interface Props {
+  clip: Clip;
+  eager?: boolean;
+}
+
+const { clip, eager = false } = Astro.props;
+---
+
+<div class="vid" style={`aspect-ratio: ${clip.width} / ${clip.height}`}>
+  <img
+    src={clip.poster}
+    alt=""
+    width={clip.width}
+    height={clip.height}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={eager ? 'high' : 'auto'}
+  />
+  <video
+    src={eager ? clip.src : undefined}
+    data-src={clip.src}
+    data-eager={eager ? 'true' : 'false'}
+    width={clip.width}
+    height={clip.height}
+    muted
+    loop
+    playsinline
+    autoplay={eager ? true : undefined}
+    preload={eager ? 'auto' : 'none'}
+    aria-hidden="true"
+  ></video>
+</div>

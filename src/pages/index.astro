@@ -1,0 +1,298 @@
+---
+import Base from '../layouts/Base.astro';
+import Video from '../components/Video.astro';
+import Cta from '../components/Cta.astro';
+import { clips } from '../data/media';
+import { site } from '../data/site';
+
+const mascots = [
+  { id: 'mm-chicken', title: 'Chicken' },
+  { id: 'mm-mogging-cat', title: 'Mogging cat' },
+  { id: 'mm-muse', title: 'Muse', tag: 'Redesign' },
+  { id: 'mm-pillow', title: 'Pillow' },
+  { id: 'mm-orbit-robot', title: 'Orbit' },
+  { id: 'mm-tobu', title: 'Tobu' },
+  { id: 'mm-llama', title: 'Llamas' },
+  { id: 'mm-red-panda', title: 'Red panda' },
+  { id: 'mm-concept-airbnb-atlas', title: 'Atlas', tag: 'Concept', note: 'Airbnb' },
+  { id: 'mm-concept-doordash-turbo', title: 'Turbo', tag: 'Concept', note: 'DoorDash' },
+  { id: 'mm-concept-codex', title: 'Codex', tag: 'Concept' },
+] as const;
+
+const motion = [
+  { id: 'm3d-achievement-screens', title: 'Achievement badges' },
+  { id: 'm3d-pokemon-pack', title: 'Reward pack' },
+  { id: 'm3d-ecom-renders', title: 'Product renders' },
+  { id: 'mo-app-mascot', title: 'App mascot' },
+  { id: 'mo-doordash', title: 'DoorDash', tag: 'Concept' },
+  { id: 'mo-calorie-congrats', title: 'Calorie congrats' },
+  { id: 'mo-liftoff', title: 'Liftoff', tag: 'Concept' },
+  { id: 'mo-streak-achievement', title: 'Streak achievement' },
+] as const;
+
+const description =
+  'Studiyo designs mascots and the motion that brings them to life inside consumer apps, from character to onboarding, streaks, and launch content.';
+---
+
+<Base
+  title="Studiyo — The mascot studio for consumer apps"
+  description={description}
+  image="/assets/video/hero-showreel.jpg"
+  imageAlt="Grid of Studiyo mascots"
+>
+  <section class="hero">
+    <div class="wrap">
+      <h1>{site.headline}</h1>
+      <p class="hero-lead">
+        We design mascots and the motion that brings them to life inside your app, from character to
+        onboarding, streaks and launch content.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
+        <p class="where">Worldwide</p>
+      </div>
+      <figure class="hero-media">
+        <Video clip={clips['hero-showreel']} eager />
+        <figcaption class="sr-only">Showreel of Studiyo mascots</figcaption>
+      </figure>
+      <div class="clients">
+        <p>Clients</p>
+        <ul>
+          <li><a href="/work/tripbff">Tripbff</a></li>
+          <li><span>TradeZella</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 id="work-title">Selected work</h2>
+        <p>Four mascots, inside the product.</p>
+      </div>
+      <div class="cases">
+        <a class="case-card reveal" href="/work/tripbff">
+          <Video clip={clips['tripbff-brand-face']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Tripbff</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+            <p>A travel companion. The app’s BFF.</p>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/dino">
+          <Video clip={clips['dino-streak-screens']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Dino</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+            <p>A calorie tracker people come back for.</p>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/grok-bot">
+          <Video clip={clips['grokbot-widget']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Grok bot</h3>
+              <span class="tag">Concept</span>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+            <p>A bot with a life outside the chat.</p>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/parrot">
+          <Video clip={clips['parrot-emotions-rive']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Parrot</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+            <p>A language buddy with feelings you can trust.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="mascots" aria-labelledby="mascots-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 id="mascots-title">More mascots</h2>
+        <p>Characters for products that need a face.</p>
+      </div>
+      <div class="gallery">
+        {
+          mascots.map((item) => (
+            <figure class="tile reveal">
+              <Video clip={clips[item.id]} />
+              <figcaption>
+                <span class="cap-row">
+                  <span>{item.title}</span>
+                  {'tag' in item && item.tag ? <span class="tag">{item.tag}</span> : null}
+                </span>
+                {'note' in item && item.note ? <span class="subcap">{item.note}</span> : null}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="product" aria-labelledby="product-title">
+    <div class="wrap">
+      <h2 id="product-title" class="statement reveal">
+        A mascot on a landing page is nice. A mascot inside your onboarding, streaks and paywall is
+        a retention tool.
+      </h2>
+      <a class="phone-link reveal" href="/work/dino">
+        <div class="phones">
+          <img
+            src="/assets/img/dino/screens/dino_screen_01_onboarding-food-prefs.webp"
+            alt="Dino onboarding screen asking which foods you like"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/img/dino/screens/dino_screen_02_streak-2-days_a.webp"
+            alt="Dino streak screen showing two days"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/img/dino/screens/dino_screen_03_dashboard-today.webp"
+            alt="Dino today dashboard with calories eaten, remaining, and burned"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </a>
+      <div class="product-grid">
+        <a class="case-card reveal" href="/work/dino">
+          <Video clip={clips['dino-app-screens']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Dino in the app</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/parrot">
+          <Video clip={clips['parrot-app-screens']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Parrot in the app</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/tripbff">
+          <Video clip={clips['tripbff-new-app']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Tripbff in the app</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </a>
+        <figure class="tile reveal">
+          <Video clip={clips['mm-muse']} />
+          <figcaption>
+            <span class="cap-row">
+              <span>Muse</span>
+              <span class="tag">Redesign</span>
+            </span>
+          </figcaption>
+        </figure>
+        <a class="case-card reveal" href="/work/grok-bot">
+          <Video clip={clips['grokbot-widget']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Grok widget</h3>
+              <span class="tag">Concept</span>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </a>
+        <a class="case-card reveal" href="/work/parrot">
+          <Video clip={clips['mip-bluebird-paywall']} />
+          <div class="case-body">
+            <div class="case-topline">
+              <h3>Paywall</h3>
+              <span class="go" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </a>
+        <figure class="tile reveal span-2">
+          <Video clip={clips['mip-recent-work']} />
+          <figcaption>Recent work</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="motion" aria-labelledby="motion-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 id="motion-title">3D & motion</h2>
+        <p>Badges, rewards, launches, and the moments people feel.</p>
+      </div>
+      <div class="motion-grid">
+        {
+          motion.map((item) => (
+            <figure class="tile reveal">
+              <Video clip={clips[item.id]} />
+              <figcaption>
+                <span class="cap-row">
+                  <span>{item.title}</span>
+                  {'tag' in item && item.tag ? <span class="tag">{item.tag}</span> : null}
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="how-we-work" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 id="process-title">How we work</h2>
+        <p>From a character to the clips that introduce it.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-no">01</span>
+          <h3>Character design</h3>
+          <p>A face that belongs to the product.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-no">02</span>
+          <h3>Expressions & states</h3>
+          <p>The feelings people actually hit.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-no">03</span>
+          <h3>Rive animation</h3>
+          <p>Motion that runs inside the app.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-no">04</span>
+          <h3>Launch content</h3>
+          <p>Banners, boards, and the clips that introduce the character.</p>
+        </li>
+      </ol>
+      <Cta />
+    </div>
+  </section>
+</Base>
