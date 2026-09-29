@@ -1,17 +1,21 @@
 :root {
-  --bg: #ffffff;
-  --paper: #faf9f7;
-  --paper-deep: #f4f2ee;
-  --ink: #161514;
-  --ink-dim: rgba(22, 21, 20, 0.62);
-  --ink-faint: rgba(22, 21, 20, 0.4);
-  --line: rgba(17, 17, 17, 0.12);
-  --line-soft: rgba(17, 17, 17, 0.07);
-  --accent: #ff6633;
-  --accent-soft: rgba(255, 102, 51, 0.1);
-  --accent-line: rgba(255, 102, 51, 0.3);
-  --blue: #2f5aa8;
-  --blue-soft: rgba(47, 90, 168, 0.07);
+  /* kargul.studio :root tokens */
+  --bg: #efefef; /* --background */
+  --paper: #ffffff; /* --card */
+  --paper-deep: #f5f5f5; /* --muted */
+  --ink: #232323; /* --foreground / --primary / --dark */
+  --ink-dim: #707070; /* --muted-foreground */
+  --ink-faint: #232323; /* smallest labels; #707070 is 4.31:1 on #efefef */
+  --line: #e5e5e5; /* --border */
+  --line-soft: #e5e5e5; /* --border */
+  --accent: #232323; /* no chromatic accent; emphasis is --foreground */
+  --accent-soft: #f5f5f5; /* --accent surface */
+  --accent-line: #232323; /* hover border */
+  --on-dark: #efefef; /* --dark-foreground / --primary-foreground */
+  --muted-on-dark: #9d9d9d; /* --dark-muted */
+  --button-hover: #171717; /* --accent-foreground */
+  --blue: #232323;
+  --blue-soft: rgba(35, 35, 35, 0.06);
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
   --radius: 14px;
   --baloo: "Baloo 2", "Switzer", sans-serif;
@@ -70,7 +74,7 @@ p {
 
 ::selection {
   background: var(--ink);
-  color: #fff;
+  color: var(--on-dark);
 }
 
 :focus-visible {
@@ -122,7 +126,7 @@ header.top {
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(239, 239, 239, 0.86);
   backdrop-filter: saturate(160%) blur(12px);
   -webkit-backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid var(--line-soft);
@@ -180,7 +184,7 @@ nav.main a.cta {
   align-items: center;
   gap: 8px;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-dark);
   font-size: 13.5px;
   font-weight: 500;
   padding: 10px 18px;
@@ -191,8 +195,8 @@ nav.main a.cta {
 
 a.cta:hover,
 nav.main a.cta:hover {
-  background: var(--accent);
-  color: #fff;
+  background: var(--button-hover);
+  color: var(--on-dark);
   transform: translateY(-1px);
 }
 
@@ -462,14 +466,14 @@ a.wtile:hover {
 
 .thesis {
   background: var(--ink);
-  color: #fff;
+  color: var(--on-dark);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   padding: 110px 0;
 }
 
 .thesis .sec-tag {
-  color: var(--accent);
+  color: var(--muted-on-dark);
 }
 
 .thesis .big {
@@ -986,7 +990,7 @@ footer.foot .base {
 }
 
 .leaf .shot-media {
-  background: #f4faf3;
+  background: var(--paper-deep);
 }
 
 .next {
