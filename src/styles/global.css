@@ -174,7 +174,8 @@ nav.main a:hover {
   color: var(--ink);
 }
 
-.cta {
+a.cta,
+nav.main a.cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -184,11 +185,12 @@ nav.main a:hover {
   font-weight: 500;
   padding: 10px 18px;
   border-radius: 100px;
-  transition: transform 0.15s, background 0.15s;
+  transition: transform 0.15s, background 0.15s, color 0.15s;
   white-space: nowrap;
 }
 
-.cta:hover {
+a.cta:hover,
+nav.main a.cta:hover {
   background: var(--accent);
   color: #fff;
   transform: translateY(-1px);
