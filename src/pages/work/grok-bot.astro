@@ -23,12 +23,6 @@ const description =
         <h1>Grok bot</h1>
         <p class="lede">A bot with an origin story, a welcome, and a widget that works out loud.</p>
         <p class="disclaimer">Concept, self-initiated. Not affiliated with xAI or Grok.</p>
-        <div class="case-hero-media">
-          <figure class="tile">
-            <Video clip={clips['grokbot-origin']} />
-            <figcaption class="sr-only">Origin story</figcaption>
-          </figure>
-        </div>
         <dl class="meta">
           <div>
             <dt>Type</dt>
@@ -46,23 +40,31 @@ const description =
       </div>
     </header>
 
-    <section class="story">
-      <div class="wrap">
-        <h2>Origin</h2>
-        <div class="copy">
-          <p>
-            It starts with a bang. A black hole, then a bot. The film gives the character a beginning
-            before it ever says hello.
-          </p>
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Origin</h2>
+          <div class="copy">
+            <p>
+              It starts with a bang. A black hole, then a bot. The film gives the character a beginning
+              before it ever says hello.
+            </p>
+          </div>
         </div>
+        <figure class="tile">
+          <Video clip={clips['grokbot-origin']} />
+          <figcaption>Origin</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="story">
-      <div class="wrap">
-        <h2>Welcome</h2>
-        <div class="copy">
-          <p>A short greeting, built to play when someone arrives.</p>
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Welcome</h2>
+          <div class="copy">
+            <p>A short greeting, built to play when someone arrives.</p>
+          </div>
         </div>
         <figure class="tile">
           <Video clip={clips['grokbot-welcome']} />
@@ -71,11 +73,13 @@ const description =
       </div>
     </section>
 
-    <section class="story">
-      <div class="wrap">
-        <h2>Companion</h2>
-        <div class="copy">
-          <p>A small character that stays nearby. Simple, friendly, and always in frame.</p>
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Companion</h2>
+          <div class="copy">
+            <p>A small character that stays nearby. Simple, friendly, and always in frame.</p>
+          </div>
         </div>
         <figure class="tile">
           <Video clip={clips['grokbot-companion']} />
@@ -84,19 +88,23 @@ const description =
       </div>
     </section>
 
-    <section class="story">
-      <div class="wrap">
-        <h2>Home-screen widget</h2>
-        <div class="copy">
-          <p>Out of the chat and onto the home screen. While it works, it hammers.</p>
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Home-screen widget</h2>
+          <div class="copy">
+            <p>Out of the chat and onto the home screen. While it works, it hammers.</p>
+          </div>
         </div>
         <figure class="tile">
           <Video clip={clips['grokbot-widget']} />
           <figcaption>Widget, hammering while it works</figcaption>
         </figure>
-        <NextProject href="/work/grok-bot" />
-        <Cta />
       </div>
     </section>
+    <div class="wrap">
+      <NextProject href="/work/grok-bot" />
+    </div>
+    <Cta />
   </article>
 </Base>

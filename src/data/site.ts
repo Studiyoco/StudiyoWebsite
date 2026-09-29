@@ -9,7 +9,7 @@ export const projects = [
   {
     href: '/work/tripbff',
     title: 'Tripbff',
-    poster: '/assets/video/tripbff-brand-face.jpg',
+    poster: '/assets/video/tripbff-official-mascot.jpg',
     width: 1280,
     height: 960,
   },

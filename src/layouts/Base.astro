@@ -13,8 +13,8 @@ interface Props {
 const {
   title,
   description,
-  image = '/assets/video/hero-showreel.jpg',
-  imageAlt = 'Studiyo mascot showreel',
+  image = '/assets/video/tripbff-official-mascot.jpg',
+  imageAlt = 'Studiyo mascot, from wireframe to render',
 } = Astro.props;
 
 const path = Astro.url.pathname || '/';
@@ -30,7 +30,7 @@ const ogImage = new URL(image, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#f3f3f1" />
+    <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Studiyo" />
     <meta property="og:title" content={title} />

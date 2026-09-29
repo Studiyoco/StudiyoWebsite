@@ -5,111 +5,120 @@ import Cta from '../components/Cta.astro';
 import { clips } from '../data/media';
 import { site } from '../data/site';
 
+const reel = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+const reelLoop = [...reel, ...reel];
+
 const mascots = [
-  { id: 'mm-chicken', title: 'Chicken' },
-  { id: 'mm-mogging-cat', title: 'Mogging cat' },
-  { id: 'mm-muse', title: 'Muse', tag: 'Redesign' },
-  { id: 'mm-pillow', title: 'Pillow' },
-  { id: 'mm-orbit-robot', title: 'Orbit' },
-  { id: 'mm-tobu', title: 'Tobu' },
-  { id: 'mm-llama', title: 'Llamas' },
-  { id: 'mm-red-panda', title: 'Red panda' },
-  { id: 'mm-concept-airbnb-atlas', title: 'Atlas', tag: 'Concept', note: 'Airbnb' },
-  { id: 'mm-concept-doordash-turbo', title: 'Turbo', tag: 'Concept', note: 'DoorDash' },
-  { id: 'mm-concept-codex', title: 'Codex', tag: 'Concept' },
+  { id: 'mm-chicken', title: 'Chicken', k: 'Character' },
+  { id: 'mm-muse', title: 'Muse', k: 'Redesign' },
+  { id: 'mm-pillow', title: 'Pillow', k: 'Character' },
+  { id: 'mm-orbit-robot', title: 'Orbit', k: 'Character' },
+  { id: 'mm-tobu', title: 'Tobu', k: 'Character' },
+  { id: 'mm-llama', title: 'Llamas', k: 'Character' },
+  { id: 'mm-red-panda', title: 'Red panda', k: 'Character' },
+  { id: 'mm-concept-airbnb-atlas', title: 'Atlas', k: 'Concept · Airbnb' },
+  { id: 'mm-concept-doordash-turbo', title: 'Turbo', k: 'Concept · DoorDash' },
 ] as const;
 
 const motion = [
-  { id: 'm3d-achievement-screens', title: 'Achievement badges' },
-  { id: 'm3d-pokemon-pack', title: 'Reward pack' },
-  { id: 'm3d-ecom-renders', title: 'Product renders' },
-  { id: 'mo-app-mascot', title: 'App mascot' },
-  { id: 'mo-doordash', title: 'DoorDash', tag: 'Concept' },
-  { id: 'mo-calorie-congrats', title: 'Calorie congrats' },
-  { id: 'mo-liftoff', title: 'Liftoff', tag: 'Concept' },
-  { id: 'mo-streak-achievement', title: 'Streak achievement' },
+  { id: 'm3d-achievement-screens', title: 'Achievement badges', k: '3D' },
+  { id: 'm3d-pokemon-pack', title: 'Reward pack', k: '3D' },
+  { id: 'm3d-ecom-renders', title: 'Product renders', k: '3D' },
+  { id: 'mo-app-mascot', title: 'App mascot', k: 'Motion' },
+  { id: 'mo-doordash', title: 'DoorDash', k: 'Concept' },
+  { id: 'mo-calorie-congrats', title: 'Calorie congrats', k: 'Motion' },
+  { id: 'mo-liftoff', title: 'Liftoff', k: 'Concept' },
+  { id: 'mo-streak-achievement', title: 'Streak achievement', k: 'Motion' },
+] as const;
+
+const steps = [
+  ['01', 'Character design', 'A face that belongs to the product.'],
+  ['02', 'Expressions & states', 'The feelings people actually hit.'],
+  ['03', 'Rive animation', 'Motion that runs inside the app.'],
+  ['04', 'Launch content', 'The clips that introduce the character.'],
 ] as const;
 
 const description =
   'Studiyo designs mascots and the motion that brings them to life inside consumer apps, from character to onboarding, streaks, and launch content.';
 ---
 
-<Base
-  title="Studiyo — The mascot studio for consumer apps"
-  description={description}
-  image="/assets/video/hero-showreel.jpg"
-  imageAlt="Grid of Studiyo mascots"
->
+<Base title="Studiyo — The mascot studio for consumer apps" description={description}>
   <section class="hero">
     <div class="wrap">
-      <h1>{site.headline}</h1>
-      <p class="hero-lead">
+      <div class="eyebrow">Mascot studio</div>
+      <h1>The mascot studio<br />for consumer apps.</h1>
+      <p class="lede">
         We design mascots and the motion that brings them to life inside your app, from character to
         onboarding, streaks and launch content.
       </p>
-      <div class="hero-actions">
-        <a class="btn" href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
-        <p class="where">Worldwide</p>
-      </div>
-      <figure class="hero-media">
-        <Video clip={clips['hero-showreel']} eager />
-        <figcaption class="sr-only">Showreel of Studiyo mascots</figcaption>
-      </figure>
-      <div class="clients">
-        <p>Clients</p>
-        <ul>
-          <li><a href="/work/tripbff">Tripbff</a></li>
-          <li><span>TradeZella</span></li>
-        </ul>
+      <div class="actions">
+        <a class="cta lg" href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
+        <span class="where">Worldwide</span>
       </div>
     </div>
   </section>
 
+  <div class="marquee" aria-label="Selected mascot animation samples">
+    <div class="fade l"></div>
+    <div class="fade r"></div>
+    <div class="track">
+      {
+        reelLoop.map((n) => (
+          <video
+            src={`/assets/works/work-${n}.mp4`}
+            muted
+            loop
+            playsinline
+            autoplay
+            preload="auto"
+            data-marquee
+            aria-hidden="true"
+          />
+        ))
+      }
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="marquee-note">
+      <span>Selected animation frames · built in Rive</span>
+      <span>Hover to pause</span>
+    </div>
+  </div>
+
   <section class="block" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2 id="work-title">Selected work</h2>
-        <p>Four mascots, inside the product.</p>
-      </div>
-      <div class="cases">
-        <a class="case-card reveal" href="/work/tripbff">
-          <Video clip={clips['tripbff-brand-face']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Tripbff</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
-            <p>A travel companion. The app’s BFF.</p>
+      <div class="sec-tag reveal"><span class="idx">01</span> Selected work</div>
+      <h2 id="work-title" class="reveal">Four mascots,<br />inside the product.</h2>
+      <div class="work-grid">
+        <a class="wtile span2 reveal" href="/work/tripbff">
+          <div class="media"><Video clip={clips['tripbff-official-mascot']} /></div>
+          <div class="cap">
+            <div class="k">Tripbff · travel & meetup</div>
+            <h3>A companion for the trip</h3>
+            <p>The app’s BFF, from wireframe to a character that can travel.</p>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/dino">
-          <Video clip={clips['dino-streak-screens']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Dino</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
-            <p>A calorie tracker people come back for.</p>
+        <a class="wtile reveal" href="/work/dino">
+          <div class="media"><Video clip={clips['dino-streak-screens']} /></div>
+          <div class="cap">
+            <div class="k">Calorie-tracking app</div>
+            <h3>Dino</h3>
+            <p>A reason to come back tomorrow.</p>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/grok-bot">
-          <Video clip={clips['grokbot-widget']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Grok bot</h3>
-              <span class="tag">Concept</span>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile reveal" href="/work/grok-bot">
+          <div class="media"><Video clip={clips['grokbot-widget']} /></div>
+          <div class="cap">
+            <div class="k">Concept</div>
+            <h3>Grok bot</h3>
             <p>A bot with a life outside the chat.</p>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/parrot">
-          <Video clip={clips['parrot-emotions-rive']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Parrot</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile span2 reveal" href="/work/parrot">
+          <div class="media"><Video clip={clips['parrot-emotions-rive']} /></div>
+          <div class="cap">
+            <div class="k">Language-learning app</div>
+            <h3>Parrot</h3>
             <p>A language buddy with feelings you can trust.</p>
           </div>
         </a>
@@ -119,21 +128,18 @@ const description =
 
   <section class="block" id="mascots" aria-labelledby="mascots-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2 id="mascots-title">More mascots</h2>
-        <p>Characters for products that need a face.</p>
-      </div>
-      <div class="gallery">
+      <div class="sec-tag reveal"><span class="idx">02</span> More mascots</div>
+      <h2 id="mascots-title" class="reveal">Characters for products<br />that need a face.</h2>
+      <div class="work-grid">
         {
           mascots.map((item) => (
-            <figure class="tile reveal">
-              <Video clip={clips[item.id]} />
-              <figcaption>
-                <span class="cap-row">
-                  <span>{item.title}</span>
-                  {'tag' in item && item.tag ? <span class="tag">{item.tag}</span> : null}
-                </span>
-                {'note' in item && item.note ? <span class="subcap">{item.note}</span> : null}
+            <figure class="wtile reveal">
+              <div class="media">
+                <Video clip={clips[item.id]} />
+              </div>
+              <figcaption class="cap">
+                <div class="k">{item.k}</div>
+                <h3>{item.title}</h3>
               </figcaption>
             </figure>
           ))
@@ -142,99 +148,93 @@ const description =
     </div>
   </section>
 
-  <section class="block" id="product" aria-labelledby="product-title">
-    <div class="wrap">
-      <h2 id="product-title" class="statement reveal">
+  <div class="thesis reveal">
+    <div class="narrow">
+      <div class="sec-tag">In the product</div>
+      <p class="big" id="product-title">
         A mascot on a landing page is nice. A mascot inside your onboarding, streaks and paywall is
         a retention tool.
-      </h2>
-      <a class="phone-link reveal" href="/work/dino">
-        <div class="phones">
-          <img
-            src="/assets/img/dino/screens/dino_screen_01_onboarding-food-prefs.webp"
-            alt="Dino onboarding screen asking which foods you like"
-            width="696"
-            height="1400"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="/assets/img/dino/screens/dino_screen_02_streak-2-days_a.webp"
-            alt="Dino streak screen showing two days"
-            width="696"
-            height="1400"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="/assets/img/dino/screens/dino_screen_03_dashboard-today.webp"
-            alt="Dino today dashboard with calories eaten, remaining, and burned"
-            width="696"
-            height="1400"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+      </p>
+    </div>
+  </div>
+
+  <section class="block" id="product" aria-labelledby="product-title">
+    <div class="wrap">
+      <a class="phone-row reveal" href="/work/dino">
+        <img
+          src="/assets/img/dino/screens/dino_screen_01_onboarding-food-prefs.webp"
+          alt="Dino onboarding screen asking which foods you like"
+          width="696"
+          height="1400"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="/assets/img/dino/screens/dino_screen_02_streak-2-days_a.webp"
+          alt="Dino streak screen showing two days"
+          width="696"
+          height="1400"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="/assets/img/dino/screens/dino_screen_03_dashboard-today.webp"
+          alt="Dino today dashboard with calories eaten, remaining, and burned"
+          width="696"
+          height="1400"
+          loading="lazy"
+          decoding="async"
+        />
       </a>
-      <div class="product-grid">
-        <a class="case-card reveal" href="/work/dino">
-          <Video clip={clips['dino-app-screens']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Dino in the app</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+      <div class="work-grid">
+        <a class="wtile reveal" href="/work/dino">
+          <div class="media"><Video clip={clips['dino-app-screens']} /></div>
+          <div class="cap">
+            <div class="k">In the app</div>
+            <h3>Dino</h3>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/parrot">
-          <Video clip={clips['parrot-app-screens']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Parrot in the app</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile reveal" href="/work/parrot">
+          <div class="media"><Video clip={clips['parrot-app-screens']} /></div>
+          <div class="cap">
+            <div class="k">In the app</div>
+            <h3>Parrot</h3>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/tripbff">
-          <Video clip={clips['tripbff-new-app']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Tripbff in the app</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile reveal" href="/work/tripbff">
+          <div class="media"><Video clip={clips['tripbff-new-app']} /></div>
+          <div class="cap">
+            <div class="k">In the app</div>
+            <h3>Tripbff</h3>
           </div>
         </a>
-        <figure class="tile reveal">
-          <Video clip={clips['mm-muse']} />
-          <figcaption>
-            <span class="cap-row">
-              <span>Muse</span>
-              <span class="tag">Redesign</span>
-            </span>
+        <figure class="wtile reveal">
+          <div class="media"><Video clip={clips['mm-muse']} /></div>
+          <figcaption class="cap">
+            <div class="k">Redesign</div>
+            <h3>Muse</h3>
           </figcaption>
         </figure>
-        <a class="case-card reveal" href="/work/grok-bot">
-          <Video clip={clips['grokbot-widget']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Grok widget</h3>
-              <span class="tag">Concept</span>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile reveal" href="/work/grok-bot">
+          <div class="media"><Video clip={clips['grokbot-widget']} /></div>
+          <div class="cap">
+            <div class="k">Concept</div>
+            <h3>Grok widget</h3>
           </div>
         </a>
-        <a class="case-card reveal" href="/work/parrot">
-          <Video clip={clips['mip-bluebird-paywall']} />
-          <div class="case-body">
-            <div class="case-topline">
-              <h3>Paywall</h3>
-              <span class="go" aria-hidden="true">→</span>
-            </div>
+        <a class="wtile reveal" href="/work/parrot">
+          <div class="media"><Video clip={clips['mip-bluebird-paywall']} /></div>
+          <div class="cap">
+            <div class="k">Paywall</div>
+            <h3>Language app</h3>
           </div>
         </a>
-        <figure class="tile reveal span-2">
-          <Video clip={clips['mip-recent-work']} />
-          <figcaption>Recent work</figcaption>
+        <figure class="wtile span2 reveal">
+          <div class="media"><Video clip={clips['mip-recent-work']} /></div>
+          <figcaption class="cap">
+            <div class="k">Compilation</div>
+            <h3>Recent work</h3>
+          </figcaption>
         </figure>
       </div>
     </div>
@@ -242,20 +242,18 @@ const description =
 
   <section class="block" id="motion" aria-labelledby="motion-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2 id="motion-title">3D & motion</h2>
-        <p>Badges, rewards, launches, and the moments people feel.</p>
-      </div>
-      <div class="motion-grid">
+      <div class="sec-tag reveal"><span class="idx">03</span> 3D & motion</div>
+      <h2 id="motion-title" class="reveal">Badges, rewards,<br />and the moments people feel.</h2>
+      <div class="work-grid">
         {
           motion.map((item) => (
-            <figure class="tile reveal">
-              <Video clip={clips[item.id]} />
-              <figcaption>
-                <span class="cap-row">
-                  <span>{item.title}</span>
-                  {'tag' in item && item.tag ? <span class="tag">{item.tag}</span> : null}
-                </span>
+            <figure class="wtile reveal">
+              <div class="media">
+                <Video clip={clips[item.id]} />
+              </div>
+              <figcaption class="cap">
+                <div class="k">{item.k}</div>
+                <h3>{item.title}</h3>
               </figcaption>
             </figure>
           ))
@@ -264,35 +262,25 @@ const description =
     </div>
   </section>
 
-  <section class="block" id="how-we-work" aria-labelledby="process-title">
+  <div class="blueprint" id="how-we-work">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2 id="process-title">How we work</h2>
-        <p>From a character to the clips that introduce it.</p>
+      <div class="sec-tag reveal"><span class="idx">04</span> How we work</div>
+      <h2 id="process-title" class="reveal">From a character<br />to the clips that introduce it.</h2>
+      <div class="phase-list">
+        {
+          steps.map(([num, title, line]) => (
+            <div class="phase reveal">
+              <div class="pn">{num}</div>
+              <div class="body">
+                <h3>{title}</h3>
+                <p>{line}</p>
+              </div>
+            </div>
+          ))
+        }
       </div>
-      <ol class="steps">
-        <li class="step reveal">
-          <span class="step-no">01</span>
-          <h3>Character design</h3>
-          <p>A face that belongs to the product.</p>
-        </li>
-        <li class="step reveal">
-          <span class="step-no">02</span>
-          <h3>Expressions & states</h3>
-          <p>The feelings people actually hit.</p>
-        </li>
-        <li class="step reveal">
-          <span class="step-no">03</span>
-          <h3>Rive animation</h3>
-          <p>Motion that runs inside the app.</p>
-        </li>
-        <li class="step reveal">
-          <span class="step-no">04</span>
-          <h3>Launch content</h3>
-          <p>Banners, boards, and the clips that introduce the character.</p>
-        </li>
-      </ol>
-      <Cta />
     </div>
-  </section>
+  </div>
+
+  <Cta />
 </Base>

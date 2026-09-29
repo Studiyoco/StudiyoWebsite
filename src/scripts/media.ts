@@ -56,6 +56,18 @@ function setupVideo(video: HTMLVideoElement) {
 
 document.querySelectorAll<HTMLVideoElement>('video[data-src]').forEach(setupVideo);
 
+document.querySelectorAll<HTMLVideoElement>('video[data-marquee]').forEach((video) => {
+  video.muted = true;
+  video.playsInline = true;
+  if (reduceMotion) {
+    video.removeAttribute('autoplay');
+    video.pause();
+    return;
+  }
+  const pending = video.play();
+  if (pending) pending.catch(() => {});
+});
+
 document.addEventListener('visibilitychange', () => {
   const videos = document.querySelectorAll<HTMLVideoElement>('video[data-src]');
   if (document.hidden || reduceMotion) {

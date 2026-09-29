@@ -29,8 +29,8 @@ const description =
 <Base
   title="Tripbff — Studiyo"
   description={description}
-  image="/assets/video/tripbff-brand-face.jpg"
-  imageAlt="Tripbff mascot on the brand banner"
+  image="/assets/video/tripbff-official-mascot.jpg"
+  imageAlt="Tripbff mascot, from wireframe to render"
 >
   <article class="case">
     <header class="case-hero">
@@ -38,18 +38,6 @@ const description =
         <p class="crumb"><a href="/#work">Work</a></p>
         <h1>Tripbff</h1>
         <p class="lede">A companion that makes the app feel like your travel BFF.</p>
-        <div class="case-hero-media">
-          <figure class="frame">
-            <img
-              src="/assets/img/tripbff/boards/tripbff_banner.webp"
-              alt="Tripbff banner. A waving globe mascot in a cloudy sky, with the words Your BFF."
-              width="2000"
-              height="1333"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </figure>
-        </div>
         <dl class="meta">
           <div>
             <dt>Client</dt>
@@ -61,9 +49,21 @@ const description =
           </div>
           <div>
             <dt>Deliverables</dt>
-            <dd>Mascot design, 3D-style render, expressions, states, animation, brand visuals</dd>
+            <dd>Mascot design, 3D-style render, expressions, states, animation</dd>
           </div>
         </dl>
+        <div class="case-hero-media">
+          <figure class="frame hero-still">
+            <img
+              src="/assets/img/tripbff/props/tripbff_waving-cutout.webp"
+              alt="Tripbff mascot waving"
+              width="1400"
+              height="1223"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
+        </div>
       </div>
     </header>
 
@@ -73,9 +73,8 @@ const description =
         <div class="copy">
           <p>
             Travel apps ask people to meet someone new in a city they don’t know. Tripbff needed a
-            character that makes that feel friendly.
+            character that makes that feel friendly. A small globe, and a wave.
           </p>
-          <p>A small globe, a wave, and a line that does the job: YOUR BFF!</p>
         </div>
       </div>
     </section>
@@ -387,18 +386,12 @@ const description =
       <div class="wrap">
         <h2>In the app</h2>
         <div class="copy">
-          <p>The character on the banner, in the poses, and inside the new app screens.</p>
+          <p>The same character, inside the new app screens.</p>
         </div>
-        <div class="stack">
-          <figure class="tile">
-            <Video clip={clips['tripbff-new-app']} />
-            <figcaption>New app screens</figcaption>
-          </figure>
-          <figure class="tile">
-            <Video clip={clips['tripbff-brand-face']} />
-            <figcaption>Brand face: banner, poses, animation</figcaption>
-          </figure>
-        </div>
+        <figure class="tile">
+          <Video clip={clips['tripbff-new-app']} />
+          <figcaption>New app screens</figcaption>
+        </figure>
         <NextProject href="/work/tripbff" />
         <Cta />
       </div>

@@ -1,14 +1,15 @@
 ---
+import Logo from './Logo.astro';
 import { site } from '../data/site';
 ---
 
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="logo" href="/">Studiyo</a>
-    <nav class="nav-links" aria-label="Primary">
+<header class="top">
+  <div class="wrap bar">
+    <Logo />
+    <nav class="main" aria-label="Primary">
       <a href="/#work">Work</a>
       <a href="/#how-we-work">How we work</a>
+      <a class="cta" href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
     </nav>
-    <a class="btn" href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
   </div>
 </header>

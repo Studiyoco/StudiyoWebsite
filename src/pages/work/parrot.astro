@@ -7,6 +7,39 @@ import { clips } from '../../data/media';
 
 const description =
   'A mascot for a language-learning app, with Rive emotions, in-product screens, a website, and a paywall.';
+
+const beats = [
+  {
+    title: 'Inside the lesson',
+    copy: 'The parrot shows up in the product, next to the words someone is trying to learn.',
+    clip: 'parrot-language-buddy',
+    caption: 'Language buddy',
+  },
+  {
+    title: 'More than a smile',
+    copy: 'A mascot that only looks happy is a mascot nobody trusts. Focused, lost, done, screaming. Built in Rive.',
+    clip: 'parrot-emotions-rive',
+    caption: 'Emotions in Rive',
+  },
+  {
+    title: 'In the app',
+    copy: 'Lessons, progress, and the character in the interface.',
+    clip: 'parrot-app-screens',
+    caption: 'App screens',
+  },
+  {
+    title: 'The website',
+    copy: 'The same buddy, on the marketing site, so the product and the page feel like one thing.',
+    clip: 'parrot-website',
+    caption: 'Website',
+  },
+  {
+    title: 'The paywall',
+    copy: 'A blue bird from the same language-app family, placed where someone decides to stay.',
+    clip: 'mip-bluebird-paywall',
+    caption: 'Paywall',
+  },
+] as const;
 ---
 
 <Base
@@ -21,12 +54,6 @@ const description =
         <p class="crumb"><a href="/#work">Work</a></p>
         <h1>Parrot</h1>
         <p class="lede">A language-learning buddy with emotions people can trust.</p>
-        <div class="case-hero-media">
-          <figure class="tile">
-            <Video clip={clips['parrot-language-buddy']} />
-            <figcaption class="sr-only">Language-learning buddy in the app</figcaption>
-          </figure>
-        </div>
         <dl class="meta">
           <div>
             <dt>Client</dt>
@@ -44,72 +71,28 @@ const description =
       </div>
     </header>
 
-    <section class="story">
-      <div class="wrap">
-        <h2>Inside the lesson</h2>
-        <div class="copy">
-          <p>The parrot shows up in the product, next to the words someone is trying to learn.</p>
-        </div>
-      </div>
-    </section>
+    {
+      beats.map((beat) => (
+        <section>
+          <div class="wrap story-grid">
+            <div>
+              <h2>{beat.title}</h2>
+              <div class="copy">
+                <p>{beat.copy}</p>
+              </div>
+            </div>
+            <figure class="tile">
+              <Video clip={clips[beat.clip]} />
+              <figcaption>{beat.caption}</figcaption>
+            </figure>
+          </div>
+        </section>
+      ))
+    }
 
-    <section class="story">
-      <div class="wrap">
-        <h2>More than a smile</h2>
-        <div class="copy">
-          <p>
-            A mascot that only looks happy is a mascot nobody trusts. Focused, lost, done, screaming.
-            Built in Rive.
-          </p>
-        </div>
-        <figure class="tile">
-          <Video clip={clips['parrot-emotions-rive']} />
-          <figcaption>Emotions in Rive</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story">
-      <div class="wrap">
-        <h2>In the app</h2>
-        <div class="copy">
-          <p>Lessons, progress, and the character in the interface.</p>
-        </div>
-        <figure class="tile">
-          <Video clip={clips['parrot-app-screens']} />
-          <figcaption>App screens</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story">
-      <div class="wrap">
-        <h2>The website</h2>
-        <div class="copy">
-          <p>The same buddy, on the marketing site, so the product and the page feel like one thing.</p>
-        </div>
-        <figure class="tile">
-          <Video clip={clips['parrot-website']} />
-          <figcaption>Website</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story">
-      <div class="wrap">
-        <h2>The paywall</h2>
-        <div class="copy">
-          <p>
-            A blue bird from the same language-app family, placed where someone decides to stay.
-          </p>
-        </div>
-        <figure class="tile">
-          <Video clip={clips['mip-bluebird-paywall']} />
-          <figcaption>Paywall</figcaption>
-        </figure>
-        <NextProject href="/work/parrot" />
-        <Cta />
-      </div>
-    </section>
+    <div class="wrap">
+      <NextProject href="/work/parrot" />
+    </div>
+    <Cta />
   </article>
 </Base>
