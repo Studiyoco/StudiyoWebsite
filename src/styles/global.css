@@ -1175,22 +1175,38 @@ footer.foot .base {
 }
 
 .tools ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 12px;
   list-style: none;
-  margin: 28px auto 0;
-  padding: 18px 22px;
-  max-width: 720px;
-  background: var(--paper);
-  border-radius: 999px;
+  margin: 36px auto 0;
+  padding: 0;
+  max-width: 880px;
 }
 
 .tools li {
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.tools svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  color: var(--ink);
+}
+
+.tools svg path {
+  fill: currentColor;
 }
 
 .team {
@@ -1198,36 +1214,57 @@ footer.foot .base {
   text-align: center;
 }
 
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 16px;
+  list-style: none;
+  margin: 40px auto 0;
+  padding: 0;
+  max-width: 440px;
+}
+
+.team-list .person:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 8px);
+}
+
 .person {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-top: 36px;
+  gap: 0;
+  min-width: 0;
 }
 
 .avatar {
-  width: 96px;
-  height: 96px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: var(--paper);
   border: 1px solid var(--line);
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.03em;
+  color: var(--ink);
 }
 
 .person h3 {
-  margin: 8px 0 0;
-  font-size: 16px;
-  letter-spacing: -0.02em;
+  margin: 12px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .person p {
-  margin: 0;
+  margin: 4px 0 0;
   color: var(--ink-dim);
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .faq {
@@ -1339,6 +1376,36 @@ footer.foot .base {
 @media (max-width: 820px) {
   nav.main a:not(.cta) {
     display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .tools ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .tools ul {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .team-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 960px;
+    gap: 24px 18px;
+  }
+
+  .team-list .person:last-child {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .avatar {
+    width: 88px;
+    height: 88px;
+    font-size: 26px;
   }
 }
 
