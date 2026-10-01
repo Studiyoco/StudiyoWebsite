@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import { clips } from '../../data/media';
+import { gallery, galleryFilters } from '../../data/gallery';
+
+const description =
+  'Selected mascot systems, in-product animation, 3D, motion, and app screens from Studiyo.';
+---
+
+<Base title="Work — Studiyo" description={description}>
+  <div class="work-index">
+    <header class="wrap">
+      <h1>Work</h1>
+      <p>Mascots, motion, and the screens they live in.</p>
+    </header>
+    <div class="wrap">
+      <div class="work-filters" role="tablist" aria-label="Filter work">
+        {
+          galleryFilters.map((filter) => (
+            <button
+              type="button"
+              role="tab"
+              class:list={[{ on: filter.id === 'all' }]}
+              data-filter={filter.id}
+              aria-pressed={filter.id === 'all' ? 'true' : 'false'}
+            >
+              {filter.label}
+            </button>
+          ))
+        }
+      </div>
+      <div class="gallery">
+        {
+          gallery.map((piece) => {
+            const clip = clips[piece.clip];
+            const media = <Video clip={clip} />;
+            const cap = (
+              <div class="piece-cap">
+                <span class="tag">{piece.tag}</span>
+                <h2>{piece.title}</h2>
+              </div>
+            );
+            return (
+              <article class="piece" data-cat={piece.cat}>
+                {piece.href ? (
+                  <a href={piece.href}>
+                    {media}
+                    {cap}
+                  </a>
+                ) : (
+                  <>
+                    {media}
+                    {cap}
+                  </>
+                )}
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  const root = document.querySelector('.work-index');
+  if (root) {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('.work-filters button')];
+    const pieces = [...root.querySelectorAll<HTMLElement>('.piece')];
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter || 'all';
+        buttons.forEach((other) => {
+          const on = other === button;
+          other.classList.toggle('on', on);
+          other.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        pieces.forEach((piece) => {
+          piece.hidden = filter !== 'all' && piece.dataset.cat !== filter;
+        });
+      });
+    });
+  }
+</script>

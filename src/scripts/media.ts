@@ -42,6 +42,18 @@ function setupVideo(video: HTMLVideoElement) {
     return;
   }
 
+  const hoverPlay =
+    video.dataset.play === 'hover' &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hoverPlay) {
+    const card = video.closest('a');
+    if (!card) return;
+    card.addEventListener('mouseenter', () => activate(video));
+    card.addEventListener('mouseleave', () => video.pause());
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {

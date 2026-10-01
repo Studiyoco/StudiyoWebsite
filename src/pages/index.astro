@@ -98,6 +98,42 @@ const faqs = [
   },
 ] as const;
 
+// Well colours sampled from each poster’s edge pixels.
+const studies = [
+  {
+    clip: 'tripbff-official-mascot',
+    href: '/work/tripbff',
+    well: '#ffffff',
+    kicker: 'Tripbff · travel & meetup',
+    title: 'A companion for the trip',
+    outcome: 'The app’s BFF, from wireframe to a character that can travel.',
+  },
+  {
+    clip: 'dino-streak-screens',
+    href: '/work/dino',
+    well: '#ffffff',
+    kicker: 'Calorie-tracking app',
+    title: 'Dino',
+    outcome: 'A reason to come back tomorrow.',
+  },
+  {
+    clip: 'grokbot-widget',
+    href: '/work/grok-bot',
+    well: '#030710',
+    kicker: 'Concept',
+    title: 'Grok bot',
+    outcome: 'A bot with a life outside the chat.',
+  },
+  {
+    clip: 'parrot-emotions-rive',
+    href: '/work/parrot',
+    well: '#ffffff',
+    kicker: 'Language-learning app',
+    title: 'Parrot',
+    outcome: 'A language buddy with feelings you can trust.',
+  },
+] as const;
+
 const team = [
   { name: 'Devan', role: 'Founder · Creative Direction', initials: 'D' },
   { name: 'Bhavi', role: 'Founder · Lead Animator', initials: 'B' },
@@ -178,41 +214,30 @@ const description =
 
   <section class="block" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h2 id="work-title">Work</h2>
+      <h2 id="work-title">Selected case studies</h2>
       <div class="work-grid">
-        <a class="wtile span2 reveal" href="/work/tripbff">
-          <div class="media"><Video clip={clips['tripbff-official-mascot']} /></div>
-          <div class="cap">
-            <div class="k">Tripbff · travel & meetup</div>
-            <h3>A companion for the trip</h3>
-            <p>The app’s BFF, from wireframe to a character that can travel.</p>
-          </div>
-        </a>
-        <a class="wtile reveal" href="/work/dino">
-          <div class="media"><Video clip={clips['dino-streak-screens']} /></div>
-          <div class="cap">
-            <div class="k">Calorie-tracking app</div>
-            <h3>Dino</h3>
-            <p>A reason to come back tomorrow.</p>
-          </div>
-        </a>
-        <a class="wtile reveal" href="/work/grok-bot">
-          <div class="media"><Video clip={clips['grokbot-widget']} /></div>
-          <div class="cap">
-            <div class="k">Concept</div>
-            <h3>Grok bot</h3>
-            <p>A bot with a life outside the chat.</p>
-          </div>
-        </a>
-        <a class="wtile span2 reveal" href="/work/parrot">
-          <div class="media"><Video clip={clips['parrot-emotions-rive']} /></div>
-          <div class="cap">
-            <div class="k">Language-learning app</div>
-            <h3>Parrot</h3>
-            <p>A language buddy with feelings you can trust.</p>
-          </div>
-        </a>
+        {
+          studies.map((study) => (
+            <a class="wtile reveal" href={study.href}>
+              <div
+                class="well"
+                style={`background:${study.well}; --rw:${clips[study.clip].width}; --rh:${clips[study.clip].height}`}
+              >
+                <Video clip={clips[study.clip]} play="hover" />
+              </div>
+              <div class="cap">
+                <div class="k">{study.kicker}</div>
+                <h3>{study.title}</h3>
+                <p>{study.outcome}</p>
+                <span class="view-case">View case study →</span>
+              </div>
+            </a>
+          ))
+        }
       </div>
+      <p class="see-all-row">
+        <a class="see-all" href="/work">See all work →</a>
+      </p>
     </div>
   </section>
 

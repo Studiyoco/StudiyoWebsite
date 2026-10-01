@@ -389,8 +389,8 @@ h2 + .sub,
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
-  margin-top: 56px;
-  align-items: start;
+  margin-top: 36px;
+  align-items: stretch;
 }
 
 .wtile {
@@ -417,18 +417,159 @@ a.wtile:hover {
   grid-column: 1 / -1;
 }
 
-.wtile .media {
-  background: var(--paper-deep);
+.wtile .well {
+  aspect-ratio: 4 / 3;
+  container-type: size;
+  display: grid;
+  place-items: center;
   overflow: hidden;
 }
 
-.wtile .media .vid {
-  width: 100%;
+.wtile .well .vid {
+  width: min(100cqi, calc(100cqb * var(--rw) / var(--rh)));
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  background: transparent;
 }
 
 .wtile .cap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 20px 22px 22px;
   border-top: 1px solid var(--line-soft);
+}
+
+.view-case {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink-dim);
+}
+
+a.wtile:hover .view-case {
+  color: var(--ink);
+}
+
+.see-all-row {
+  text-align: center;
+  margin: 28px 0 0;
+}
+
+.see-all {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.see-all:hover {
+  border-color: var(--ink);
+}
+
+.work-index {
+  padding: 56px 0 88px;
+}
+
+.work-index header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.07;
+}
+
+.work-index header p {
+  margin: 12px auto 0;
+  max-width: 28em;
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.work-filters button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+
+.work-filters button.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-dark);
+}
+
+.gallery {
+  columns: 1;
+  column-gap: 18px;
+  margin-top: 28px;
+}
+
+.piece {
+  break-inside: avoid;
+  margin-bottom: 18px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.piece a {
+  display: block;
+  color: inherit;
+}
+
+.piece .vid {
+  background: var(--paper-deep);
+}
+
+.piece-cap {
+  padding: 14px 16px 16px;
+}
+
+.piece-cap h2 {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+@media (min-width: 720px) {
+  .gallery {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1040px) {
+  .gallery {
+    columns: 3;
+  }
 }
 
 .wtile .cap .k,

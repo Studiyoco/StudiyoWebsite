@@ -4,9 +4,11 @@ import type { Clip } from '../data/media';
 interface Props {
   clip: Clip;
   eager?: boolean;
+  /** view: play while on screen. hover: play on hover when a fine pointer is available. */
+  play?: 'view' | 'hover';
 }
 
-const { clip, eager = false } = Astro.props;
+const { clip, eager = false, play = 'view' } = Astro.props;
 ---
 
 <div class="vid" style={`aspect-ratio: ${clip.width} / ${clip.height}`}>
@@ -23,6 +25,7 @@ const { clip, eager = false } = Astro.props;
     src={eager ? clip.src : undefined}
     data-src={clip.src}
     data-eager={eager ? 'true' : 'false'}
+    data-play={play}
     width={clip.width}
     height={clip.height}
     muted
