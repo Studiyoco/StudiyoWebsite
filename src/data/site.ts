@@ -11,7 +11,7 @@ export const projects = [
     title: 'Tripbff',
     poster: '/assets/video/tripbff-official-mascot.jpg',
     width: 1280,
-    height: 960,
+    height: 720,
   },
   {
     href: '/work/dino',

@@ -5,7 +5,18 @@ import Cta from '../components/Cta.astro';
 import { clips } from '../data/media';
 import { site } from '../data/site';
 
-const reel = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+const reel = [
+  ['01', 640, 640],
+  ['02', 854, 640],
+  ['03', 854, 640],
+  ['04', 1138, 640],
+  ['05', 854, 640],
+  ['06', 640, 640],
+  ['07', 854, 640],
+  ['08', 854, 640],
+  ['09', 1138, 640],
+  ['10', 1138, 640],
+] as const;
 const reelLoop = [...reel, ...reel];
 
 const mascots = [
@@ -63,9 +74,12 @@ const description =
     <div class="fade r"></div>
     <div class="track">
       {
-        reelLoop.map((n) => (
+        reelLoop.map(([n, w, h]) => (
           <video
             src={`/assets/works/work-${n}.mp4`}
+            width={w}
+            height={h}
+            style={`aspect-ratio: ${w} / ${h}`}
             muted
             loop
             playsinline

@@ -305,13 +305,15 @@ h1 {
 }
 
 .track video {
+  box-sizing: content-box;
   height: 250px;
   width: auto;
+  max-width: none;
   display: block;
   border-radius: 16px;
   border: 1px solid var(--line-soft);
   background: var(--paper-deep);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 @keyframes scroll {
@@ -378,6 +380,7 @@ h2 + .sub,
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
   margin-top: 56px;
+  align-items: start;
 }
 
 .wtile {
@@ -405,28 +408,12 @@ a.wtile:hover {
 }
 
 .wtile .media {
-  position: relative;
   background: var(--paper-deep);
   overflow: hidden;
-  aspect-ratio: 16 / 10;
-}
-
-.wtile.span2 .media {
-  aspect-ratio: 16 / 7;
-}
-
-.wtile .media .vid,
-.wtile .media img,
-.wtile .media video {
-  width: 100%;
-  height: 100%;
 }
 
 .wtile .media .vid {
-  position: absolute;
-  inset: 0;
-  aspect-ratio: auto !important;
-  height: 100%;
+  width: 100%;
 }
 
 .wtile .cap {
@@ -661,7 +648,7 @@ footer.foot .base {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -839,6 +826,7 @@ footer.foot .base {
 .brand-grid {
   display: grid;
   gap: 16px;
+  align-items: start;
 }
 
 .split,
@@ -856,16 +844,13 @@ footer.foot .base {
 }
 
 .shot-media {
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  background: var(--paper);
+  background: var(--paper-deep);
 }
 
 .shot-media img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  display: block;
 }
 
 .swatches {
@@ -1011,9 +996,10 @@ footer.foot .base {
 }
 
 .next img {
-  width: 132px;
   height: 96px;
-  object-fit: cover;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
   border-radius: 10px;
   background: var(--paper-deep);
   flex: none;
@@ -1098,10 +1084,6 @@ footer.foot .base {
 
   .wtile.span2 {
     grid-column: auto;
-  }
-
-  .wtile.span2 .media {
-    aspect-ratio: 16 / 10;
   }
 
   .phone-row {
