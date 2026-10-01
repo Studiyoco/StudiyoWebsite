@@ -4,21 +4,19 @@ import Video from '../components/Video.astro';
 import { clips } from '../data/media';
 import { site } from '../data/site';
 
-const reel = [
-  ['01', 640, 640],
-  ['02', 854, 640],
-  ['03', 854, 640],
-  ['04', 1138, 640],
-  ['05', 854, 640],
-  ['06', 640, 640],
-  ['07', 854, 640],
-  ['08', 854, 640],
-  ['09', 1138, 640],
-  ['10', 1138, 640],
+// Client marks from the original site logo slider (www.studiyo.co/assets/logos).
+const clientLogos = [
+  { src: '/assets/logos/tripbff.png', name: 'TripBFF', width: 905, height: 256 },
+  { src: '/assets/logos/tradezella.png', name: 'Tradezella', width: 1071, height: 256 },
+  { src: '/assets/logos/indian-motorcycle.png', name: 'Indian Motorcycle', width: 684, height: 256 },
+  { src: '/assets/logos/pure-poker.png', name: 'Pure Poker', width: 1214, height: 256 },
+  { src: '/assets/logos/alertsify.png', name: 'Alertsify', width: 1093, height: 256 },
+  { src: '/assets/logos/menufit.png', name: 'Menufit', width: 957, height: 256 },
+  { src: '/assets/logos/liggo.png', name: 'Liggo', width: 869, height: 256 },
+  { src: '/assets/logos/v21-studios.png', name: 'V21 Studios', width: 480, height: 256 },
 ] as const;
-const reelLoop = [...reel, ...reel];
+const clientLogoLoop = [...clientLogos, ...clientLogos];
 
-// No client logo files are in the repo. Wordmarks below are Tripbff and TradeZella only.
 // Logos: simple-icons (Rive, Figma, Blender, Cinema 4D, LottieFiles), official After Effects mark.
 const tools = [
   {
@@ -53,8 +51,6 @@ const tools = [
     path: 'M17.928 0H6.072A6.076 6.076 0 0 0 0 6.073v11.854A6.076 6.076 0 0 0 6.073 24h11.854A6.076 6.076 0 0 0 24 17.927V6.073A6.076 6.076 0 0 0 17.927 0m1.42 7.013a1.4 1.4 0 0 1-.26.39c-.11.11-.24.2-.39.26-.14.06-.3.09-.45.09-2.511 0-3.482 1.53-4.792 4.042l-.8 1.51c-1.231 2.382-2.762 5.323-6.894 5.323-.31 0-.62-.12-.84-.35a1.188 1.188 0 0 1 .84-2.031c2.511 0 3.482-1.53 4.792-4.042l.8-1.51c1.231-2.382 2.762-5.323 6.894-5.323q.24 0 .45.09c.14.06.27.15.39.26.11.11.2.24.26.39a1.17 1.17 0 0 1 0 .9',
   },
 ] as const;
-
-const clients = ['Tripbff', 'TradeZella'] as const;
 
 const services = [
   {
@@ -131,37 +127,16 @@ const description =
   <section class="clients" id="clients" aria-labelledby="clients-title">
     <div class="wrap">
       <h2 id="clients-title">Clients we’ve worked with</h2>
-      <ul class="wordmarks">
-        {clients.map((name) => <li>{name}</li>)}
-      </ul>
     </div>
-    <div class="marquee" aria-label="Selected mascot animation samples">
+    <div class="logo-marquee">
       <div class="fade l"></div>
       <div class="fade r"></div>
-      <div class="track">
+      <div class="logo-track">
         {
-          reelLoop.map(([n, w, h]) => (
-            <video
-              src={`/assets/works/work-${n}.mp4`}
-              width={w}
-              height={h}
-              style={`aspect-ratio: ${w} / ${h}`}
-              muted
-              loop
-              playsinline
-              autoplay
-              preload="auto"
-              data-marquee
-              aria-hidden="true"
-            />
+          clientLogoLoop.map((logo) => (
+            <img src={logo.src} alt={logo.name} width={logo.width} height={logo.height} />
           ))
         }
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="marquee-note">
-        <span>Selected animation frames · built in Rive</span>
-        <span>Hover to pause</span>
       </div>
     </div>
   </section>
