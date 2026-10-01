@@ -2,10 +2,25 @@
 import Base from '../../layouts/Base.astro';
 import Video from '../../components/Video.astro';
 import { clips } from '../../data/media';
-import { gallery, galleryFilters } from '../../data/gallery';
+import { gallery, galleryFilters, galleryTags, type GalleryPiece } from '../../data/gallery';
 
 const description =
-  'Selected mascot systems, in-product animation, 3D, motion, and app screens from Studiyo.';
+  'App design, 3D, mascots, and motion from Studiyo.';
+
+function pieceClip(piece: GalleryPiece) {
+  if ('clip' in piece) return clips[piece.clip];
+  if ('src' in piece) {
+    return {
+      src: piece.src,
+      poster: piece.poster,
+      width: piece.width,
+      height: piece.height,
+      label: piece.title,
+      concept: false,
+    };
+  }
+  return null;
+}
 ---
 
 <Base title="Work — Studiyo" description={description}>
@@ -21,9 +36,9 @@ const description =
             <button
               type="button"
               role="tab"
-              class:list={[{ on: filter.id === 'all' }]}
+              class:list={[{ on: filter.id === 'app' }]}
               data-filter={filter.id}
-              aria-pressed={filter.id === 'all' ? 'true' : 'false'}
+              aria-pressed={filter.id === 'app' ? 'true' : 'false'}
             >
               {filter.label}
             </button>
@@ -33,16 +48,29 @@ const description =
       <div class="gallery">
         {
           gallery.map((piece) => {
-            const clip = clips[piece.clip];
-            const media = <Video clip={clip} />;
+            const clip = pieceClip(piece);
+            const media = clip ? (
+              <Video clip={clip} />
+            ) : 'image' in piece ? (
+              <div class="vid" style={`aspect-ratio: ${piece.width} / ${piece.height}`}>
+                <img
+                  src={piece.image}
+                  alt={piece.title}
+                  width={piece.width}
+                  height={piece.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : null;
             const cap = (
               <div class="piece-cap">
-                <span class="tag">{piece.tag}</span>
+                <span class="tag">{galleryTags[piece.cat]}</span>
                 <h2>{piece.title}</h2>
               </div>
             );
             return (
-              <article class="piece" data-cat={piece.cat}>
+              <article class="piece" data-cat={piece.cat} hidden={piece.cat !== 'app'}>
                 {piece.href ? (
                   <a href={piece.href}>
                     {media}
@@ -70,14 +98,14 @@ const description =
     const pieces = [...root.querySelectorAll<HTMLElement>('.piece')];
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        const filter = button.dataset.filter || 'all';
+        const filter = button.dataset.filter || 'app';
         buttons.forEach((other) => {
           const on = other === button;
           other.classList.toggle('on', on);
           other.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
         pieces.forEach((piece) => {
-          piece.hidden = filter !== 'all' && piece.dataset.cat !== filter;
+          piece.hidden = piece.dataset.cat !== filter;
         });
       });
     });
