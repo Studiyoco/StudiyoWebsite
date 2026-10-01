@@ -1,0 +1,33 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div class="fl">
+        <Logo />
+        <p>The mascot studio for consumer apps.</p>
+      </div>
+      <div class="links">
+        <div class="col">
+          <h5>Studio</h5>
+          <a href="/work">Work</a>
+          <a href="/#services">Services</a>
+          <a href={site.x} target="_blank" rel="noopener noreferrer">X</a>
+        </div>
+        <div class="col">
+          <h5>Start</h5>
+          <a href={site.book} target="_blank" rel="noopener noreferrer">Book a call</a>
+        </div>
+      </div>
+    </div>
+    <div class="base">
+      <span>© {year} Studiyo</span>
+      <span>Worldwide</span>
+    </div>
+  </div>
+</footer>

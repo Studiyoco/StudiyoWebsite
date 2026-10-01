@@ -1,0 +1,23 @@
+---
+import { projects } from '../data/site';
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const index = projects.findIndex((project) => project.href === href);
+const next = projects[(index + 1) % projects.length];
+---
+
+<a class="next" href={next.href}>
+  <img src={next.poster} alt="" width={next.width} height={next.height} />
+  <span class="next-copy">
+    <span>
+      <small>Next project</small>
+      <strong>{next.title}</strong>
+    </span>
+    {'tag' in next && next.tag ? <span class="tag">{next.tag}</span> : null}
+    <span class="go" aria-hidden="true">→</span>
+  </span>
+</a>

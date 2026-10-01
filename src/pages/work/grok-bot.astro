@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import Cta from '../../components/Cta.astro';
+import NextProject from '../../components/NextProject.astro';
+import { clips } from '../../data/media';
+
+const description =
+  'A self-initiated Grok bot concept: an origin story, a welcome, a companion, and a home-screen widget that hammers while it works. Not affiliated with xAI or Grok.';
+---
+
+<Base
+  title="Grok bot — Studiyo"
+  description={description}
+  image="/assets/video/grokbot-widget.jpg"
+  imageAlt="Grok bot concept as a home-screen widget"
+>
+  <article class="case">
+    <header class="case-hero">
+      <div class="wrap">
+        <p class="crumb"><a href="/work">Work</a></p>
+        <p class="kicker" style="margin-top: 18px">Concept</p>
+        <h1>Grok bot</h1>
+        <p class="lede">A bot with an origin story, a welcome, and a widget that works out loud.</p>
+        <p class="disclaimer">Concept, self-initiated. Not affiliated with xAI or Grok.</p>
+        <dl class="meta">
+          <div>
+            <dt>Type</dt>
+            <dd>Concept, self-initiated</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Mobile</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Origin film, welcome, companion, home-screen widget</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Origin</h2>
+          <div class="copy">
+            <p>
+              It starts with a bang. A black hole, then a bot. The film gives the character a beginning
+              before it ever says hello.
+            </p>
+          </div>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['grokbot-origin']} />
+          <figcaption>Origin</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Welcome</h2>
+          <div class="copy">
+            <p>A short greeting, built to play when someone arrives.</p>
+          </div>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['grokbot-welcome']} />
+          <figcaption>Animated welcome</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Companion</h2>
+          <div class="copy">
+            <p>A small character that stays nearby. Simple, friendly, and always in frame.</p>
+          </div>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['grokbot-companion']} />
+          <figcaption>Companion</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap story-grid">
+        <div>
+          <h2>Home-screen widget</h2>
+          <div class="copy">
+            <p>Out of the chat and onto the home screen. While it works, it hammers.</p>
+          </div>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['grokbot-widget']} />
+          <figcaption>Widget, hammering while it works</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="wrap">
+      <NextProject href="/work/grok-bot" />
+    </div>
+    <Cta />
+  </article>
+</Base>

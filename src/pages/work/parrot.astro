@@ -1,0 +1,98 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import Cta from '../../components/Cta.astro';
+import NextProject from '../../components/NextProject.astro';
+import { clips } from '../../data/media';
+
+const description =
+  'A mascot for a language-learning app, with Rive emotions, in-product screens, a website, and a paywall.';
+
+const beats = [
+  {
+    title: 'Inside the lesson',
+    copy: 'The parrot shows up in the product, next to the words someone is trying to learn.',
+    clip: 'parrot-language-buddy',
+    caption: 'Language buddy',
+  },
+  {
+    title: 'More than a smile',
+    copy: 'A mascot that only looks happy is a mascot nobody trusts. Focused, lost, done, screaming. Built in Rive.',
+    clip: 'parrot-emotions-rive',
+    caption: 'Emotions in Rive',
+  },
+  {
+    title: 'In the app',
+    copy: 'Lessons, progress, and the character in the interface.',
+    clip: 'parrot-app-screens',
+    caption: 'App screens',
+  },
+  {
+    title: 'The website',
+    copy: 'The same buddy, on the marketing site, so the product and the page feel like one thing.',
+    clip: 'parrot-website',
+    caption: 'Website',
+  },
+  {
+    title: 'The paywall',
+    copy: 'A blue bird from the same language-app family, placed where someone decides to stay.',
+    clip: 'mip-bluebird-paywall',
+    caption: 'Paywall',
+  },
+] as const;
+---
+
+<Base
+  title="Parrot — Studiyo"
+  description={description}
+  image="/assets/video/parrot-emotions-rive.jpg"
+  imageAlt="Parrot mascot showing several emotions"
+>
+  <article class="case">
+    <header class="case-hero">
+      <div class="wrap">
+        <p class="crumb"><a href="/work">Work</a></p>
+        <h1>Parrot</h1>
+        <p class="lede">A language-learning buddy with emotions people can trust.</p>
+        <dl class="meta">
+          <div>
+            <dt>Client</dt>
+            <dd>Language-learning app</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Mobile app and website</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Mascot, Rive emotions, app screens, website, paywall</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    {
+      beats.map((beat) => (
+        <section>
+          <div class="wrap story-grid">
+            <div>
+              <h2>{beat.title}</h2>
+              <div class="copy">
+                <p>{beat.copy}</p>
+              </div>
+            </div>
+            <figure class="tile">
+              <Video clip={clips[beat.clip]} />
+              <figcaption>{beat.caption}</figcaption>
+            </figure>
+          </div>
+        </section>
+      ))
+    }
+
+    <div class="wrap">
+      <NextProject href="/work/parrot" />
+    </div>
+    <Cta />
+  </article>
+</Base>

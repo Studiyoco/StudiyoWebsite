@@ -1,0 +1,359 @@
+---
+import Base from '../../layouts/Base.astro';
+import Video from '../../components/Video.astro';
+import Cta from '../../components/Cta.astro';
+import NextProject from '../../components/NextProject.astro';
+import { clips } from '../../data/media';
+
+const palette = [
+  { name: 'Dark red', hex: '#500A04' },
+  { name: 'Green', hex: '#15A741' },
+  { name: 'Bright green', hex: '#88FE67' },
+  { name: 'Lime', hex: '#C6FD6E' },
+  { name: 'Blue', hex: '#80B6FD' },
+];
+
+const poses: [string, string, number, number][] = [
+  ['dino_lying-down_cutout.webp', 'Lying down', 1600, 914],
+  ['dino_peeking_cutout.webp', 'Peeking', 1344, 768],
+  ['dino_sitting-on-food-plate_cutout.webp', 'Sitting with food', 1600, 914],
+  ['dino_standing-wave_cutout.webp', 'Standing wave', 1600, 914],
+  ['dino_waving-excited_cutout.webp', 'Waving, excited', 1600, 914],
+  ['dino_waving-smile_cutout.webp', 'Waving, smile', 1344, 768],
+];
+
+const description =
+  'A mascot and brand system for a calorie-tracking app, built around a streak people don’t want to break.';
+---
+
+<Base
+  title="Dino — Studiyo"
+  description={description}
+  image="/assets/video/dino-streak-screens.jpg"
+  imageAlt="Dino the calorie-tracking mascot on streak screens"
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap"
+    />
+  </Fragment>
+  <article class="case">
+    <header class="case-hero">
+      <div class="wrap">
+        <p class="crumb"><a href="/work">Work</a></p>
+        <h1>Dino</h1>
+        <p class="lede">A calorie-tracking mascot. Miss the streak, and Dino dies.</p>
+        <dl class="meta">
+          <div>
+            <dt>Client</dt>
+            <dd>Calorie-tracking app</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Mobile app</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Mascot, brand system, onboarding, streak screens, app icon, motion</dd>
+          </div>
+        </dl>
+        <div class="case-hero-media">
+          <figure class="frame">
+            <img
+              src="/assets/img/dino/mascot/dino_excited-jump_square.webp"
+              alt="Dino jumping on a grassy hill"
+              width="1600"
+              height="1600"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </div>
+    </header>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>A reason to open the app</h2>
+        <div class="copy">
+          <p>
+            Goals are easy to ignore. A character is harder. The streak is the product: come back, or
+            Dino doesn’t make it.
+          </p>
+        </div>
+        <figure class="tile">
+          <Video clip={clips['dino-app-screens']} />
+          <figcaption>Dino inside the app</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Onboarding</h2>
+        <div class="copy">
+          <p>It starts with a simple question: what food do you like? Preferences first, then the habit.</p>
+        </div>
+        <div class="onboard">
+          <img
+            class="phone-shot"
+            src="/assets/img/dino/screens/dino_screen_01_onboarding-food-prefs.webp"
+            alt="Onboarding screen where Dino asks which foods you like"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <figure class="shot">
+            <div class="shot-media">
+              <img
+                src="/assets/img/dino/mascot/dino_sitting-on-food-plate_cutout.webp"
+                alt="Dino sitting with a plate of food"
+                width="1600"
+                height="914"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>Sitting with the food</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Two days in</h2>
+        <div class="copy">
+          <p>The streak screen is the reward. A big number, the week ahead, and Dino in the middle of it. “2 Days Streak!”</p>
+        </div>
+        <div class="screen-row">
+          <img
+            src="/assets/img/dino/screens/dino_screen_02_streak-2-days_a.webp"
+            alt="Streak screen, two days, with Dino sitting on food"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/img/dino/screens/dino_screen_05_streak-2-days_b.webp"
+            alt="Another two-day streak screen with Dino"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/img/dino/screens/dino_screen_06_streak-2-days_c.webp"
+            alt="Two-day streak screen with a share action"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figure class="tile" style="margin-top: 16px">
+          <Video clip={clips['dino-streak-screens']} />
+          <figcaption>Streak screens in motion</figcaption>
+        </figure>
+        <figure class="frame" style="margin-top: 16px">
+          <img
+            src="/assets/img/dino/brand/dino_ui_streak-bar.webp"
+            alt="Week streak bar with Tuesday in progress"
+            width="1480"
+            height="324"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Don’t forget the goal</h2>
+        <div class="copy">
+          <p>
+            The home screen keeps score: eaten, remaining, burned. Under it, a promise. We will never
+            let you forget your goals.
+          </p>
+        </div>
+        <div class="screen-row">
+          <img
+            src="/assets/img/dino/screens/dino_screen_03_dashboard-today.webp"
+            alt="Today dashboard with calories eaten, remaining, and burned"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/img/dino/screens/dino_screen_04_never-forget-goals.webp"
+            alt="Screen promising we will never let you forget your goals, with Dino"
+            width="696"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="wrap">
+        <h2>Brand system</h2>
+        <div class="copy">
+          <p>
+            Green that feels like food. Baloo 2 for the type. An app icon, a streak bar, food icons,
+            and poses the screens can reuse.
+          </p>
+        </div>
+        <figure class="frame">
+          <img
+            src="/assets/img/dino/boards/dino_branding-board.webp"
+            alt="Dino brand board with palette, type, app icon, food icons, and mascot poses"
+            width="2000"
+            height="2000"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="brand-grid" style="margin-top: 16px">
+          <div class="baloo-card">
+            <p class="aa">Aa</p>
+            <p class="bb">Baloo 2</p>
+            <p class="sample">A face for the habit.</p>
+          </div>
+          <figure class="frame">
+            <img
+              src="/assets/img/dino/brand/dino_board_typography-baloo-tile.webp"
+              alt="Typography tile from the Dino brand board, set in Baloo"
+              width="1399"
+              height="1282"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <ul class="swatches" style="margin-top: 16px">
+          {
+            palette.map((swatch) => (
+              <li>
+                <span class="chip" style={`--c: ${swatch.hex}`}></span>
+                <strong>{swatch.name}</strong>
+                <code>{swatch.hex}</code>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="split" style="margin-top: 16px">
+          <figure class="frame">
+            <img
+              class="app-icon"
+              src="/assets/img/dino/brand/dino_app-icon.webp"
+              alt="Dino app icon, a green dinosaur waving on a pale background"
+              width="798"
+              height="798"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <div class="icon-row">
+              <img
+                src="/assets/img/dino/brand/dino_icon_food_apple.webp"
+                alt="Apple icon"
+                width="180"
+                height="180"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/assets/img/dino/brand/dino_icon_food_burger.webp"
+                alt="Burger icon"
+                width="180"
+                height="180"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/assets/img/dino/brand/dino_icon_food_egg.webp"
+                alt="Egg icon"
+                width="180"
+                height="180"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/assets/img/dino/brand/dino_icon_food_pizza.webp"
+                alt="Pizza icon"
+                width="180"
+                height="180"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/assets/img/dino/brand/dino_icon_outline-line.webp"
+                alt="Line icon of Dino"
+                width="512"
+                height="512"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figure class="frame" style="margin-top: 16px">
+              <img
+                src="/assets/img/dino/brand/dino_board_food-icons-tile.webp"
+                alt="Food icon tile from the Dino brand board"
+                width="1399"
+                height="1282"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </div>
+        <div class="expr leaf" style="margin-top: 16px">
+          {
+            poses.map(([file, label, width, height]) => (
+              <figure class="shot">
+                <div class="shot-media">
+                  <img
+                    src={`/assets/img/dino/mascot/${file}`}
+                    alt={`Dino, ${label.toLowerCase()}`}
+                    width={width}
+                    height={height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>{label}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <figure class="frame" style="margin-top: 16px">
+          <img
+            src="/assets/img/dino/brand/dino_board_app-of-the-day-tile.webp"
+            alt="Brand artwork of Dino on a hill, from the brand board"
+            width="1600"
+            height="1290"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <p class="copy" style="margin-top: 10px">Brand artwork from the system.</p>
+        <figure class="tile" style="margin-top: 16px">
+          <Video clip={clips['dino-mascot-system']} />
+          <figcaption>Mascot and brand system</figcaption>
+        </figure>
+        <NextProject href="/work/dino" />
+        <Cta />
+      </div>
+    </section>
+  </article>
+</Base>
